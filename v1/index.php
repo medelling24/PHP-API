@@ -62,6 +62,11 @@ if($res == null &&
 
     }
 }
+else{
+    $res = [
+        "status" => 405,
+        "body" => "Ops.."];
+}
 
 
 //Response

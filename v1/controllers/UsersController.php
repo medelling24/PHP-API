@@ -40,7 +40,7 @@ class UsersController
                 if($response){
 
                     $res = array(
-                        "message" => "OK"
+                        "data" => $response["id"]
                     );
                     return[
                         "status" => 200,

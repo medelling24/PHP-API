@@ -19,7 +19,7 @@ class UsersModel{
      * @param $first_name string user first name
      * @param $last_name string user last name
      * @param $password string user password
-     * @return bool true if the user is inserted, false if not inserted
+     * @return int|bool int if the user was created and returns the ID,  false if not inserted
      */
     public static function insert($email, $first_name, $last_name, $password)
     {
@@ -47,7 +47,9 @@ class UsersModel{
             $result = $sth->execute();
 
             if ($result) {
-                return true;
+                return [
+                    "id"=> $pdo->lastInsertId()
+                ];
             } else {
                 return false;
             }
