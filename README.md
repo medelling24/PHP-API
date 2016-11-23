@@ -37,6 +37,7 @@ An array with the following keys and values:
     - 'email' — The user id;
     - 'first_name' — First name;
     - 'last_name' — Last name;
+    
 ***
 
 ### Errors
@@ -87,6 +88,7 @@ Create a new user
 An array with the following keys and values:
 
 - **data** — new user id.
+
 ***
 
 ### Errors
@@ -148,6 +150,7 @@ Update a user
 An array with the following keys and values:
 
 - **message** — "updated".
+
 ***
 
 ### Errors
@@ -199,6 +202,7 @@ Deletes a user based on id
 An array with the following keys and values:
 
 - **message** — "deleted"
+
 ***
 
 ### Errors
