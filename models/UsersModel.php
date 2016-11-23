@@ -1,7 +1,7 @@
 <?php
 
 namespace users\model;
-require '../db/conection.php';
+require 'db/conection.php';
 use connection\connection;
 use PDO;
 

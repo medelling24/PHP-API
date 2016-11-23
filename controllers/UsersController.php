@@ -221,6 +221,7 @@ class UsersController
 
         else if($response["rows"]==0){
             $res = array(
+                "error"=>false,
                 "message" => "No user"
             );
             return[

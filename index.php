@@ -14,7 +14,9 @@ use users\controller\UsersController;
 use view\json\ApiJson;
 
 //Get the url info
-$url =  explode("/",$_GET['PATH_INFO']);
+$url = preg_split('@/@', $_SERVER['REQUEST_URI'], NULL, PREG_SPLIT_NO_EMPTY);
+
+
 
 //Get the first element of the URL, should be the model
 $model = array_shift($url);
@@ -33,7 +35,13 @@ $method = strtolower($_SERVER['REQUEST_METHOD']);
 
 //If the model is valid and the other parameter is a number or does not exists
 if($res == null &&
-    ($url[0]==null || is_numeric($url[0]) )) {
+    (
+        count($url) == 0 ||
+        (
+            is_array($url) && count($url) >0 &&  is_numeric($url[0])
+        )
+    )
+){
     switch ($method) {
         case 'get':
             //Get user from specific ID

@@ -12,13 +12,13 @@ class UsersTest extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->client = new GuzzleHttp\Client([
-            'base_uri' => 'http://www.formstack.com.mx/'
+            'base_uri' => 'http://www.testbox.dev/'
         ]);
     }
 
     public function testInvalid_Model()
     {
-        $response = $this->client->get('v1/test',[
+        $response = $this->client->get('test',[
             'http_errors' => false
         ]);
 
@@ -27,7 +27,7 @@ class UsersTest extends PHPUnit_Framework_TestCase
 
     public function testInvalid_Method()
     {
-        $response = $this->client->copy('v1/users',[
+        $response = $this->client->copy('users',[
             'http_errors' => false
         ]);
 
@@ -36,7 +36,7 @@ class UsersTest extends PHPUnit_Framework_TestCase
 
     public function testGet_User_ErrorString()
     {
-        $response = $this->client->get('v1/users/X',[
+        $response = $this->client->get('users/X',[
             'http_errors' => false
         ]);
 
@@ -45,7 +45,7 @@ class UsersTest extends PHPUnit_Framework_TestCase
 
     public function testGet_User_Error()
     {
-        $response = $this->client->get('v1/users/0',[
+        $response = $this->client->get('users/0',[
             'http_errors' => false
         ]);
 
@@ -54,7 +54,7 @@ class UsersTest extends PHPUnit_Framework_TestCase
 
     public function testPost_New_User()
     {
-        $response = $this->client->post('v1/users',[
+        $response = $this->client->post('users',[
             'json' => [
                 "first_name"=>"Test",
                 "last_name"=>"User",
@@ -70,7 +70,7 @@ class UsersTest extends PHPUnit_Framework_TestCase
 
     public function testPost_New_User_Error_Params()
     {
-        $response = $this->client->post('v1/users',[
+        $response = $this->client->post('users',[
             'json' => [
                 "first_name"=>"Test",
                 "email"=>"test".rand(0, 999)."@gmail.com".rand(0, 999)
@@ -83,7 +83,7 @@ class UsersTest extends PHPUnit_Framework_TestCase
 
     public function testGet_User()
     {
-        $response = $this->client->post('v1/users',[
+        $response = $this->client->post('users',[
             'json' => [
                 "first_name"=>"Test",
                 "last_name"=>"User",
@@ -97,7 +97,7 @@ class UsersTest extends PHPUnit_Framework_TestCase
 
         $this->assertArrayHasKey('data', $data);
 
-        $response = $this->client->get('v1/users/'.$data["data"]);
+        $response = $this->client->get('users/'.$data["data"]);
 
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($response->getBody(), true);
@@ -112,7 +112,7 @@ class UsersTest extends PHPUnit_Framework_TestCase
     {
         $email = "test".rand(0, 999)."@gmail.com".rand(0, 999);
 
-        $response = $this->client->post('v1/users',[
+        $response = $this->client->post('users',[
             'json' => [
                 "first_name"=>"Test",
                 "last_name"=>"User",
@@ -125,7 +125,7 @@ class UsersTest extends PHPUnit_Framework_TestCase
         $data = json_decode($response->getBody(), true);
         $this->assertArrayHasKey('data', $data);
 
-        $response = $this->client->post('v1/users',[
+        $response = $this->client->post('users',[
             'json' => [
                 "first_name"=>"Test",
                 "last_name"=>"User",
@@ -140,7 +140,7 @@ class UsersTest extends PHPUnit_Framework_TestCase
 
     public function testPut_New_User()
     {
-        $response = $this->client->post('v1/users',[
+        $response = $this->client->post('users',[
             'json' => [
                 "first_name"=>"Test",
                 "last_name"=>"User",
@@ -153,7 +153,7 @@ class UsersTest extends PHPUnit_Framework_TestCase
         $data = json_decode($response->getBody(), true);
 
         $this->assertArrayHasKey('data', $data);
-        $response = $this->client->put('v1/users/'.$data["data"],[
+        $response = $this->client->put('users/'.$data["data"],[
             'json' => [
                 "first_name"=>"TestPut",
                 "last_name"=>"User",
@@ -170,7 +170,7 @@ class UsersTest extends PHPUnit_Framework_TestCase
     public function testPut_User_Error()
     {
 
-        $response = $this->client->put('v1/users/0',[
+        $response = $this->client->put('users/0',[
             'json' => [
                 "first_name"=>"Test",
                 "last_name"=>"User",
@@ -187,7 +187,7 @@ class UsersTest extends PHPUnit_Framework_TestCase
     public function testDelete_User_Error()
     {
 
-        $response = $this->client->delete('v1/users/0',[
+        $response = $this->client->delete('users/0',[
             'http_errors' => false
         ]);
 
@@ -197,7 +197,7 @@ class UsersTest extends PHPUnit_Framework_TestCase
 
     public function testDelete_User()
     {
-        $response = $this->client->post('v1/users',[
+        $response = $this->client->post('users',[
             'json' => [
                 "first_name"=>"Test",
                 "last_name"=>"User",
@@ -211,7 +211,7 @@ class UsersTest extends PHPUnit_Framework_TestCase
 
         $this->assertArrayHasKey('data', $data);
 
-        $response = $this->client->delete('v1/users/'.$data['data'],[
+        $response = $this->client->delete('users/'.$data['data'],[
             'http_errors' => false
         ]);
 
