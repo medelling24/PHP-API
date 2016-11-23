@@ -5,10 +5,19 @@ Little REST API for Users.
 
 #How to run 
 - Set up vagrant...
--      vagrant up
--      vagrant ssh
--      cd /vagrant
--      vendor/bin/phinx migrate -e development
+
+-   ```sh
+    $ vagrant up
+    ```
+-   ```sh
+    $ vagrant ssh
+    ```
+-   ```sh
+    $ cd /vagrant
+    ```
+-   ```sh
+    $ vendor/bin/phinx migrate -e development
+    ```
 - Done :D
 
 #API Documentation
