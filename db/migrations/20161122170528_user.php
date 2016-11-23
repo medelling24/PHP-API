@@ -35,6 +35,7 @@ class User extends AbstractMigration
             ->addColumn('password', 'string', ['limit' => 255, 'null' => false])
             ->addColumn('created_at', 'timestamp', ['null' => false, 'default' => 'CURRENT_TIMESTAMP'])
             ->addColumn('updated_at', 'timestamp', ['null' => false, 'default' => 'CURRENT_TIMESTAMP'])
+            ->addColumn('deleted_at', 'timestamp', ['null' => true])
         ;
 
         $user->create();
